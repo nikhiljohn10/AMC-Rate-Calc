@@ -13,93 +13,104 @@
 
 <body ng-controller="mainController as calc">
     <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h2 class="center-align">{{ heading }}</h2>
-                <div class="divider"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s8 offset-s1">
-                <canvas id="myChart" width="500" height="200"></canvas>
-            </div>
-            <div class="chart-legend col s3"></div>
-        </div>
-        <div class="row">
-            <form class="col s12">
-                <div class="row">
-                    <div class="col s3 offset-s1">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="amc" type="text" ng-model="calc.amc">
-                                <label class="active" for="amc">AMC (%)</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="amcinc" type="text" ng-model="calc.amcinc">
-                                <label class="active" for="amcinc">AMC Increment (%)</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="years" type="text" ng-model="calc.years">
-                                <label class="active" for="years">Years</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="amt" type="text" ng-model="calc.amt">
-                                <label class="active" for="amt">Final Amount</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s6 offset-s1">
-                        <table class="responsive-table highlight">
-                            <thead>
-                                <tr>
-                                    <th data-field="year">Year</th>
-                                    <th data-field="amc" class="center-align">AMC (%)</th>
-                                    <th data-field="amount" class="right-align">Amount (Rs)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="center-align">Nil</td>
-                                    <td class="right-align">{{calc.amt | currency:""}}</td>
-                                </tr>
-                                <tr ng-repeat="x in calc.revise()">
-                                    <td>{{x.year+1}}</td>
-                                    <td class="center-align">{{x.amc}}</td>
-                                    <td class="right-align">{{x.amount | currency:""}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="divider"></div>
-                        <br>
-                        <div class="row">
-                            <div class="col s5">
-                                <h6>Agg. AMC Amount</h6>
-                            </div>
-                            <div class="col s7 right-align">
-                                <h6>{{calc.amcamt | currency:""}}&nbsp;</h6>
-                            </div>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="row">
-                            <div class="col s5">
-                                <h5>Total</h5>
-                            </div>
-                            <div class="col s7 right-align">
-                                <h5><b>{{calc.cost | currency:""}}</b></h5>
-                            </div>
-                        </div>
-                    </div>
+        <div class="section">
+            <div class="row">
+                <div class="col s12">
+                    <a class="right" target="_blank" href="https://github.com/nikhiljohn10/AMC-Rate-Calc"><img src="github.png" alt="App Source"></a>
+                    <h2 class="center-align">{{ heading }}</h2>
+                    <div class="divider"></div>
                 </div>
-            </form>
+            </div>
+            <div class="row">
+                <div class="col s8 offset-s1">
+                    <canvas id="myChart" width="500" height="200"></canvas>
+                </div>
+                <div class="chart-legend col s3"></div>
+            </div>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="col s3 offset-s1">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="amc" type="text" ng-model="calc.amc">
+                                    <label class="active" for="amc">AMC (%)</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="amcinc" type="text" ng-model="calc.amcinc">
+                                    <label class="active" for="amcinc">AMC Increment (%)</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="years" type="text" ng-model="calc.years">
+                                    <label class="active" for="years">Years</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="amt" type="text" ng-model="calc.amt">
+                                    <label class="active" for="amt">Final Amount</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s6 offset-s1">
+                            <table class="responsive-table highlight">
+                                <thead>
+                                    <tr>
+                                        <th data-field="year">Year</th>
+                                        <th data-field="amc" class="center-align">AMC (%)</th>
+                                        <th data-field="amount" class="right-align">Amount (Rs)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td class="center-align">Nil</td>
+                                        <td class="right-align">{{calc.amt | currency:""}}</td>
+                                    </tr>
+                                    <tr ng-repeat="x in calc.revise()">
+                                        <td>{{x.year+1}}</td>
+                                        <td class="center-align">{{x.amc}}</td>
+                                        <td class="right-align">{{x.amount | currency:""}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="divider"></div>
+                            <br>
+                            <div class="row">
+                                <div class="col s5">
+                                    <h6>Agg. AMC Amount</h6>
+                                </div>
+                                <div class="col s7 right-align">
+                                    <h6>{{calc.amcamt | currency:""}}&nbsp;</h6>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="row">
+                                <div class="col s5">
+                                    <h5>Total</h5>
+                                </div>
+                                <div class="col s7 right-align">
+                                    <h5><b>{{calc.cost | currency:""}}</b></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+    <footer class="page-footer teal lighten-3">
+        <div class="footer-copyright">
+            <div class="container">
+                2015 Copyleft
+                <a class="grey-text text-lighten-4 right" target="_blank" href="https://nikz.in">NIKZ.IN</a>
+            </div>
+        </div>
+    </footer>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
